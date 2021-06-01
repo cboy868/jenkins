@@ -1,0 +1,21 @@
+version: "3"
+services:
+  jenkins:
+    image: jenkinsci/blueocean
+    container_name: jenkins
+    volumes:
+     - ./services/jenkins/docker.sock:/var/run/docker.sock
+     - ./data/jenkins:/var/jenkins_home
+    hostname: jenkins
+    restart: always
+    ports:
+      - "8011:8080"
+      - "50000:50000"
+  
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
