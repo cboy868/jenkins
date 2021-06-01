@@ -14,8 +14,4 @@ services:
   
 
 networks:
-  default:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.20.0.0/16
+  jenkins:
