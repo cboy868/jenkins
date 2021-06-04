@@ -16,3 +16,27 @@ services:
 
 networks:
   jenkins:
+
+
+
+
+
+version: '3'
+services:
+  jenkins:
+    image: 'jenkins/jenkins'
+    container_name: jenkins
+    restart: always
+    user: root
+    ports:
+      - '82:8080'
+      - '50000:50000'
+    volumes:
+      - '/var/jenkins_home:/var/jenkins_home'
+      - '/usr/local/maven:/usr/local/maven'
+      - '/usr/lib/jvm:/usr/lib/jvm'
+      - '/usr/share/javazi-1.8:/usr/share/javazi-1.8'
+    environment:
+      - SET_CONTAINER_TIMEZONE=true
+      - CONTAINER_TIMEZONE=Asia/Shanghai
+    privileged: true

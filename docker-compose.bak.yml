@@ -1,17 +1,18 @@
 version: "3"
 services:
-  jenkins1:
-    image: jenkinsci/blueocean
-    container_name: jenkins1
+  jenkins:
+    build:
+      context: ./services
+    container_name: jenkins
     volumes:
      - ./services/jenkins/docker.sock:/var/run/docker.sock
      - ./data/jenkins:/var/jenkins_home:rw
      - /data/htdocs:/data/htdocs/:rw
-    hostname: jenkins1
+    hostname: jenkins
     restart: always
     ports:
-      - "8012:8080"
+      - "8011:8080"
       - "50000:50000"
 
 networks:
-  jenkins1:
+  jenkins:
